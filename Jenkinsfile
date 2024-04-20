@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define your Docker Hub credentials and Kubernetes configuration here
-        KUBECONFIG = '/home/ec2-user/python-app'
+        KUBECONFIG = './python-app'
         docker_user = 'techzoneisn023'
         image_tag = 'latest'
         image_name = 'python-img'
