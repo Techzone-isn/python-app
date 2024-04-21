@@ -54,7 +54,7 @@ def save_to_db(original_word, mirrored_word):
 import requests
 
 def test_mirror_endpoint():
-    response = requests.get('http://54.169.232.18:4004/api/mirror?word=fOoBar25')
+    response = requests.get('http://localhost:4004/api/mirror?word=fOoBar25' )
     data = response.json()
     assert data['transformed'] == '52RAbOoF'
 
