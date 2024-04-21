@@ -28,7 +28,7 @@ spec:
     app: app
  ports:
     - protocol: TCP
-      port: 4004
+      port: 80
       targetPort: 4004
       nodePort: 30080
 ---
@@ -47,4 +47,4 @@ spec:
          service:
            name: app-service
            port:
-             number: 4004
+             number: 80
