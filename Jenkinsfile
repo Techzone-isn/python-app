@@ -32,6 +32,8 @@ pipeline {
         stage('Update Deployment File Image Tag') {
             steps {
                 sh "sed -i 's/python-job:v1/${image_name}:${image_tag}/' ./Deployment.yml"
+                sh "pwd"
+                sh "cat ./Deployment.yml"
             }
         }
         stage('Deploy to Kubernetes') {
