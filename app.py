@@ -59,4 +59,4 @@ def test_mirror_endpoint():
     assert data['transformed'] == '52RAbOoF'
 
 if __name__ == '__main__':
-        app.run(port=4004, host='54.169.232.18')
+        app.run(port=4004, host='0.0.0.0')
