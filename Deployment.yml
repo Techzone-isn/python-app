@@ -13,8 +13,7 @@ spec:
         app: app
     spec:
       containers:
-      - image: arifislam/python-job:v1
-        imagePullPolicy: IfNotPresent
+      - image: techzoneisn023/python-job
         name: app
         ports:
         - containerPort: 4004
