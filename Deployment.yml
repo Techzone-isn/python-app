@@ -38,7 +38,7 @@ metadata:
  name: myapp-ingress
 spec:
  rules:
- - host: 54.169.232.18
+ - host: app.local.host
    http:
      paths:
      - path: /api
