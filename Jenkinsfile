@@ -36,9 +36,11 @@ pipeline {
                 sh "cat ./Deployment.yml"
             }
         }
-        stage('Deploy to Kubernetes') {
+        stage('Get Node') {
             steps {
-                sh "kubectl apply -f ./Deployment.yml"
+                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: '', credentialsId: 'kube-secret', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.58.2:8443') {
+                    sh "kubectl apply -f Deployment.yml"
+                }
             }
         }
     }
