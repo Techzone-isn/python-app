@@ -38,7 +38,7 @@ metadata:
  name: myapp-ingress
 spec:
  rules:
- - host: app.local.host
+ - host: testsproject.net
    http:
      paths:
      - path: /api
