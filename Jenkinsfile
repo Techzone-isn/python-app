@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Get Node') {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: '', credentialsId: 'kube-secret', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.58.2:8443') {
+                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: '', credentialsId: 'kube-secret', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.49.2:8443') {
                     sh "kubectl apply -f Deployment.yml"
                 }
             }
