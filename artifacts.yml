@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: |
+    python -m venv venv
+    source venv/bin/activate
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- script: |
+    source venv/bin/activate
+    python -m unittest discover
+  displayName: 'Run tests'
+
+- task: ArtifactoryBuild@1
+  inputs:
+    artifactoryService: 'ArtifactoryServiceConnection'
+    collectBuildInfo: true
+
+- script: |
+    source venv/bin/activate
+    python setup.py sdist bdist_wheel
+    jfrog rt u "dist/*" "my-repo/python-app/"
+  displayName: 'Publish to Artifactory'
+
+- task: ArtifactoryPublishBuildInfo@1
+  inputs:
+    artifactoryService: 'ArtifactoryServiceConnection'
+    buildInfo: '$(Build.BuildId)'
